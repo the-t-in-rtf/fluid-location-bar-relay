@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Unit Tests for location bar "syncAll" relay...</title>
+        <title>Unit Tests for location bar startup...</title>
         <!-- Bring in jQuery and other dependencies -->
         <script type="text/javascript" src="/nm/infusion/src/lib/jquery/core/js/jquery.js"></script>
 
@@ -18,34 +18,16 @@
         <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformation.js"></script>
         <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
 
-        <!-- QUnit/jqUnit dependencies -->
-        <script type="text/javascript" src="/nm/infusion/tests/lib/qunit/js/qunit.js"></script>
-        <script type="text/javascript" src="/nm/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
-        <script type="text/javascript" src="/nm/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
-
-        <!-- jquery.simulate -->
-        <script type="text/javascript" src="/nm/infusion/tests/lib/jquery-ui/js/jquery.simulate.js"></script>
-
-
         <script type="text/javascript" src ="/src/js/locationBar.js"></script>
         <script type="text/javascript" src="/tests/static/js/tests-locationBar.js"></script>
 
         <script src="/testem.js"></script>
     </head>
     <body>
-        <h1>Nothing to see here...</h1>
-        <p>These tests work only with the location bar and a component.  There are no user inputs and no feedback will be displayed.</p>
+        <p>This page is provided for manual QA.  There is a locationBar component available at the global `locationBar` variable.</p>
 
-        <h1 id="qunit-header">Table of Contents Test Suite</h1>
-        <h2 id="qunit-banner"></h2>
-        <div id="qunit-testrunner-toolbar"></div>
-        <h2 id="qunit-userAgent"></h2>
-        <ol id="qunit-tests"></ol>
-
-        <!-- Test HTML -->
-        <div id="qunit-fixture">
-        </div>
-
-        <script type="text/javascript" src="/tests/static/qunit/qunit-locationBar.js"></script>
+        <script type="text/javascript">
+            var locationBar = gpii.locationBar.tests.locationBar();
+        </script>
     </body>
 </html>

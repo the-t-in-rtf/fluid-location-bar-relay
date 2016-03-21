@@ -1,0 +1,64 @@
+^<html>
+    <head>
+        <title>Unit Tests for locationBar and gpii-binder in combination...</title>
+        <!-- Bring in jQuery and other dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
+
+        <!-- Bring in fluid dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/lib/fastXmlPull/js/fastXmlPull.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/renderer/js/fluidParser.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/renderer/js/fluidRenderer.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidRequests.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+
+        <!-- QUnit/jqUnit dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
+
+        <!-- jquery.simulate -->
+        <script type="text/javascript" src="../../node_modules/infusion/tests/lib/jquery-ui/js/jquery.simulate.js"></script>
+
+        <!-- Bring in "binder" to test as well -->
+        <script type="text/javascript" src="../../node_modules/gpii-binder/src/js/binder.js"></script>
+
+        <!-- Bring in our test helper -->
+        <script type="text/javascript" src="../js/tests-locationBar-binder.js"></script>
+
+        <!-- Foundation styles -->
+        <link rel="stylesheet" href="../../bower_components/foundation/css/foundation.css"/>
+    </head>
+    <body>
+        <button class="avert-your-focus">Change Focus by Clicking This</button>
+
+        <h1 id="qunit-header">Table of Contents Test Suite</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <!-- Test HTML -->
+        <div id="qunit-fixture">
+        <!--<div id="qunit-fixture" style="display:none">-->
+            <!-- markup for "long notation" tests -->
+            <div class="viewport-long">
+                <form>
+                    <input type="text" name="init-from-model"/>
+                    <input type="text" name="init-from-markup" value="initialized from markup"/>
+                    <input type="text" name="update-from-model"/>
+                    <input type="text" name="update-from-markup"/>
+                </form>
+            </div>
+        </div>
+
+        <!-- our QUnit tests -->
+        <script type="text/javascript" src="../jqunit/jqunit-locationBar-binder.js"></script>
+    </body>
+</html>

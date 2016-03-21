@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Unit Tests for location bar "syncAll" relay...</title>
+        <!-- Bring in jQuery and other dependencies -->
+        <script type="text/javascript" src="/nm/infusion/src/lib/jquery/core/js/jquery.js"></script>
+
+        <!-- Bring in fluid dependencies -->
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/lib/fastXmlPull/js/fastXmlPull.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/renderer/js/fluidParser.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/renderer/js/fluidRenderer.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidRequests.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+
+        <!-- QUnit/jqUnit dependencies -->
+        <script type="text/javascript" src="/nm/infusion/tests/lib/qunit/js/qunit.js"></script>
+        <script type="text/javascript" src="/nm/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
+        <script type="text/javascript" src="/nm/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
+
+        <!-- jquery.simulate -->
+        <script type="text/javascript" src="/nm/infusion/tests/lib/jquery-ui/js/jquery.simulate.js"></script>
+
+
+        <script type="text/javascript" src ="/src/js/locationBar.js"></script>
+        <script type="text/javascript" src="/tests/static/js/tests-locationBar.js"></script>
+    </head>
+    <body>
+        <h1>Nothing to see here...</h1>
+        <p>These tests work only with the location bar and a component.  There are no user inputs and no feedback will be displayed.</p>
+
+         our QUnit tests
+        <!--<script type="text/javascript" src="../jqunit/jqunit-locationBar.js"></script>-->
+        <script type="text/javascript">
+            var myComponent = gpii.locationBar.tests.locationBar();
+        </script>
+    </body>
+</html>

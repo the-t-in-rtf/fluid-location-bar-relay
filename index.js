@@ -1,0 +1,9 @@
+/*
+
+    As this is a browser component, this file is only meant to make it easier to refer to our code and fixtures using
+    the standard `%package-name/path/to/content` notation.
+
+ */
+"use strict";
+var fluid = require("infusion");
+fluid.module.register("gpii-location-bar-relay", __dirname, require);

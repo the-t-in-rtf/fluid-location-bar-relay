@@ -1,2 +1,0 @@
-require("./caseHolder");
-require("./testEnvironment");

@@ -4,7 +4,6 @@
 
 */
 
-// TODO:  Add support for IE using https://github.com/devote/HTML5-History-API or similar polyfill.
 "use strict";
 /* global fluid, window, document */
 
@@ -113,6 +112,7 @@
 
         fluid.each(changeSet, function (value, key) {
             var change = { path: key };
+            // TODO:  Confirm whether this is still necessary.  Model transformation rules should clear this out already.
             if (value === undefined || value === null) {
                 change.type = "DELETE";
             }

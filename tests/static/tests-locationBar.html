@@ -29,15 +29,23 @@
 
         <script type="text/javascript" src ="/src/js/locationBar.js"></script>
         <script type="text/javascript" src="/tests/static/js/tests-locationBar.js"></script>
+
+        <script src="/testem.js"></script>
     </head>
     <body>
         <h1>Nothing to see here...</h1>
         <p>These tests work only with the location bar and a component.  There are no user inputs and no feedback will be displayed.</p>
 
-         our QUnit tests
-        <!--<script type="text/javascript" src="../jqunit/jqunit-locationBar.js"></script>-->
-        <script type="text/javascript">
-            var myComponent = gpii.locationBar.tests.locationBar();
-        </script>
+        <h1 id="qunit-header">Table of Contents Test Suite</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <!-- Test HTML -->
+        <div id="qunit-fixture">
+        </div>
+
+        <script type="text/javascript" src="/tests/static/qunit/qunit-locationBar.js"></script>
     </body>
 </html>

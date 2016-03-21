@@ -1,0 +1,10 @@
+{
+  "test_page": [
+    "tests/static/tests-locationBar.html?number=2"
+  ],
+  "routes": {
+    "/nm":    "node_modules",
+    "/src":   "src",
+    "/tests": "tests"
+  }
+}

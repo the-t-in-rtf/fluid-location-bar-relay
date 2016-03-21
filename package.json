@@ -4,7 +4,7 @@
   "description": "A Fluid component to relay changes in model state to and from the browser's location bar.",
   "main": "src/js/locationBar.js",
   "scripts": {
-    "test": "node tests/all-tests.js"
+    "test": "testem ci"
   },
   "repository": {
     "type": "git",

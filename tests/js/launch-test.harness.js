@@ -1,4 +1,5 @@
-// A convenience script to start up a copy of the test harness for manual QA.
+// TODO:  Remove this once testem is confirmed working
+// A convenience script to start up a copy of the test harness for manual QA.  You can also just use `testem`.
 //
 var fluid = require("infusion");
 fluid.setLogging(true);

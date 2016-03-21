@@ -1,3 +1,4 @@
+// TODO:  Remove this once testem is confirmed working
 "use strict";
 var fluid = require("infusion");
 
@@ -6,18 +7,19 @@ require("../../../");
 
 fluid.defaults("gpii.locationBar.tests.harness", {
     gradeNames: ["gpii.express"],
+    baseUrl: {
+        expander: {
+            funcName: "fluid.stringTemplate",
+            args:     ["http://localhost:%port/", { port: "{that}.options.port"}]
+        }
+    },
     config: {
         express: {
             port:  "{harness}.options.port"
         },
         app: {
             name: "Location Bar Relay Test Harness",
-            url:  {
-                expander: {
-                    funcName: "fluid.stringTemplate",
-                    args:     ["http://localhost:%port/", { port: "{that}.options.apiPort"}]
-                }
-            }
+            url:  "{harness}.options.baseUrl"
         }
     },
     components: {

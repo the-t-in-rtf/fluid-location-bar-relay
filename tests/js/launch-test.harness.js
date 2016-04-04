@@ -6,7 +6,7 @@ fluid.setLogging(true);
 
 var gpii = fluid.registerNamespace("gpii");
 
-require("./fixtures/harness");
+require("./fixtures");
 
 gpii.locationBar.tests.harness({
     port:  "9918"

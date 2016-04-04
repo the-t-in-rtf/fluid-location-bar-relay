@@ -1,9 +1,12 @@
-// TODO:  Remove this once testem is confirmed working
 "use strict";
 var fluid = require("infusion");
+var gpii  = fluid.registerNamespace("gpii");
 
 require("gpii-express");
-require("../../../");
+require("../../");
+
+require("gpii-test-browser");
+gpii.tests.browser.loadTestingSupport();
 
 fluid.defaults("gpii.locationBar.tests.harness", {
     gradeNames: ["gpii.express"],
@@ -43,6 +46,27 @@ fluid.defaults("gpii.locationBar.tests.harness", {
                 path:    "/tests",
                 content: ["%gpii-location-bar-relay/tests"]
             }
+        }
+    }
+});
+
+// Our test caseHolder (based on a standard one from gpii-test-browser).
+fluid.defaults("gpii.locationBar.tests.caseHolder", {
+    gradeNames: ["gpii.tests.browser.caseHolder.withExpress"]
+});
+
+// Our test environment (based on a standard one from gpii-test-browser).
+fluid.defaults("gpii.locationBar.tests.environment", {
+    gradeNames: ["gpii.tests.browser.environment.withExpress"],
+    startUrl: {
+        expander: {
+            funcName: "fluid.stringTemplate",
+            args: ["%baseUrl%endpoint", { baseUrl: "{testEnvironment}.options.url", endpoint: "{testEnvironment}.options.endpoint"}]
+        }
+    },
+    components: {
+        express: {
+            type: "gpii.locationBar.tests.harness"
         }
     }
 });

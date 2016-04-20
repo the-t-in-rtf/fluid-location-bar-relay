@@ -20,8 +20,9 @@
     "infusion": "2.0.0-dev.20160309T145652Z.9f515ec"
   },
   "devDependencies": {
+    "bower": "1.7.2",
     "kettle": "git://github.com/amb26/kettle.git#2517cc1d9d047d58aef70db48d1580da718ffc16",
-    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#c83ff8cde8ba37c72f7e26bebf81c44d1a681c36",
+    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#8c7077f0cf71d45d0ae8a0e524573cc81eadcaa3",
     "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#30135c97b908acfd83cba2844588ffb1ff18d9a4",
     "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#c6d0b70366acd2b64a91289ab2ddaa42994e4abf",
     "grunt": "0.4.4",

@@ -6,7 +6,7 @@ require("gpii-express");
 require("../../");
 
 require("gpii-test-browser");
-gpii.tests.browser.loadTestingSupport();
+gpii.test.browser.loadTestingSupport();
 
 fluid.defaults("gpii.locationBar.tests.harness", {
     gradeNames: ["gpii.express"],
@@ -52,12 +52,12 @@ fluid.defaults("gpii.locationBar.tests.harness", {
 
 // Our test caseHolder (based on a standard one from gpii-test-browser).
 fluid.defaults("gpii.locationBar.tests.caseHolder", {
-    gradeNames: ["gpii.tests.browser.caseHolder.withExpress"]
+    gradeNames: ["gpii.test.browser.caseHolder.withExpress"]
 });
 
 // Our test environment (based on a standard one from gpii-test-browser).
 fluid.defaults("gpii.locationBar.tests.environment", {
-    gradeNames: ["gpii.tests.browser.environment.withExpress"],
+    gradeNames: ["gpii.test.browser.environment.withExpress"],
     startUrl: {
         expander: {
             funcName: "fluid.stringTemplate",

@@ -7,6 +7,7 @@ require("./fixtures");
 fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
     gradeNames: ["gpii.locationBar.tests.caseHolder"],
     rawModules: [{
+        name: "Testing the location bar and 'gpii-binder' together...",
         tests: [
             {
                 name: "Confirm that query data is relayed on startup...",
@@ -19,7 +20,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onLoaded",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "combinedComponent.model.radio"]
+                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -28,7 +29,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.browser.evaluate",
-                        args: [gpii.tests.browser.tests.val, "input[name='radio']:checked"]
+                        args: [gpii.test.browser.val, "input[name='radio']:checked"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -53,7 +54,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onClickComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "combinedComponent.model.radio"]
+                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -62,7 +63,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.browser.evaluate",
-                        args: [gpii.tests.browser.tests.getGlobalValue, "window.history.state.radio"]
+                        args: [gpii.test.browser.getGlobalValue, "window.history.state.radio"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -88,7 +89,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onClickComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "combinedComponent.model.radio"]
+                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -102,7 +103,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onBackComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "combinedComponent.model.radio"]
+                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",

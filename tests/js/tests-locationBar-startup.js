@@ -14,6 +14,7 @@ gpii.locationBar.tests.startup.getQueryJson = function () {
 fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
     gradeNames: ["gpii.locationBar.tests.caseHolder"],
     rawModules: [{
+        name: "Testing the location bar startup process...",
         tests: [
             {
                 name: "Confirm that data is synchronized correctly on startup...",
@@ -26,7 +27,7 @@ fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onLoaded",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "locationBarComponent.model"]
+                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -35,7 +36,7 @@ fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.browser.evaluate",
-                        args: [gpii.tests.browser.tests.getGlobalValue, "window.history.state"]
+                        args: [gpii.test.browser.getGlobalValue, "window.history.state"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",

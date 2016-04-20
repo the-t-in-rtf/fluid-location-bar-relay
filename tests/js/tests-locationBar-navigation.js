@@ -14,6 +14,7 @@ gpii.locationBar.tests.navigation.applyChange = function (path, value) {
 fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
     gradeNames: ["gpii.locationBar.tests.caseHolder"],
     rawModules: [{
+        name: "Testing 'back' and 'forward' navigation...",
         tests: [
             {
                 name: "Confirm that data is synchronized correctly on startup...",
@@ -31,7 +32,7 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "locationBarComponent.model.number"]
+                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -45,7 +46,7 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "locationBarComponent.model.number"]
+                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -59,7 +60,7 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onBackComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "locationBarComponent.model.number"]
+                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
@@ -73,7 +74,7 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onForwardComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.getGlobalValue, "locationBarComponent.model.number"]
+                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",

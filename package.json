@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
-    "infusion": "2.0.0-dev.20160309T145652Z.9f515ec"
+    "infusion": "git://github.com/amb26/infusion.git#81ef49cdc0e78a96549c5195d9ffd42604087096"
   },
   "devDependencies": {
     "bower": "1.7.2",
     "kettle": "git://github.com/amb26/kettle.git#2517cc1d9d047d58aef70db48d1580da718ffc16",
     "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#8c7077f0cf71d45d0ae8a0e524573cc81eadcaa3",
-    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#30135c97b908acfd83cba2844588ffb1ff18d9a4",
-    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#c6d0b70366acd2b64a91289ab2ddaa42994e4abf",
+    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#6d733de45c85fe21468d9d94af6b3824b6128b66",
+    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#f32e8f93f341a201b62eac62cac8134cae38cdf8",
     "grunt": "0.4.4",
     "grunt-contrib-jshint": "0.9.0",
     "grunt-jsonlint": "1.0.4",

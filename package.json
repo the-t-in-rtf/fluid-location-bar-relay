@@ -22,9 +22,9 @@
   "devDependencies": {
     "bower": "1.7.2",
     "kettle": "git://github.com/amb26/kettle.git#2517cc1d9d047d58aef70db48d1580da718ffc16",
-    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#8c7077f0cf71d45d0ae8a0e524573cc81eadcaa3",
-    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#0ac4012bc57c902abf241852e04f02517beeb071",
-    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#f362e5ed40027e6c6264322de0c04458cbf9c6c9",
+    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#a94d9311f25d591c687d626566f9d2f01109ed26",
+    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#3bb6f75741c0b402c303977fb8746ccb02d350e6",
+    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#f88c0fc34c984e0dfe36ce7cf84b1199b2610718",
     "grunt": "0.4.4",
     "grunt-contrib-jshint": "0.9.0",
     "grunt-jsonlint": "1.0.4",

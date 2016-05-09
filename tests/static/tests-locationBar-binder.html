@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Unit Tests for location bar in combination with the "binder"...</title>
+        <!-- Bring in jQuery and other dependencies -->
+        <script type="text/javascript" src="/nm/infusion/src/lib/jquery/core/js/jquery.js"></script>
+
+        <!-- Bring in fluid dependencies -->
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+
+        <script type="text/javascript" src ="/nm/gpii-binder/src/js/binder.js"></script>
+
+        <script type="text/javascript" src ="/src/js/locationBar.js"></script>
+        <script type="text/javascript" src="/tests/static/js/tests-locationBar-binder.js"></script>
+    </head>
+    <body>
+        <form class="locationBar-binder-form">
+            <p>This page is used to test gpii-binder and this package when used in combination.</p>
+
+            <h2>Form Controls</h2>
+
+            <p>
+                <label for="radioOne">One</label>
+                <input type="radio" name="radio" id="radioOne" value="one" checked="true"/>
+            </p>
+            <p>
+                <label for="radioTwo">Two</label>
+                <input type="radio" name="radio" id="radioTwo" value="two"/>
+            </p>
+            <p>
+                <label for="radioThree">Three</label>
+                <input type="radio" name="radio" id="radioThree" value="three"/>
+            </p>
+            <p>
+                <label for="radioThree">Four (the default)</label>
+                <input type="radio" name="radio" id="radioFour" value="four"/>
+            </p>
+        </form>
+
+        <script type="text/javascript">
+            var combinedComponent = gpii.locationBar.tests.binder(".locationBar-binder-form");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "gpii-location-bar-relay",
+  "version": "1.0.0",
+  "description": "A Fluid component to relay changes in model state to and from the browser's location bar.",
+  "main": "src/js/locationBar.js",
+  "scripts": {
+    "test": "node tests/all-tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GPII/gpii-location-bar-relay.git"
+  },
+  "author": "Tony Atkins <tony@raisingthefloor.org>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "http://issues.gpii.net/"
+  },
+  "homepage": "https://github.com/GPII/gpii-location-bar-relay",
+  "dependencies": {
+    "infusion": "git://github.com/amb26/infusion.git#81ef49cdc0e78a96549c5195d9ffd42604087096"
+  },
+  "devDependencies": {
+    "bower": "1.7.2",
+    "kettle": "git://github.com/amb26/kettle.git#2517cc1d9d047d58aef70db48d1580da718ffc16",
+    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#a94d9311f25d591c687d626566f9d2f01109ed26",
+    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#3bb6f75741c0b402c303977fb8746ccb02d350e6",
+    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#f88c0fc34c984e0dfe36ce7cf84b1199b2610718",
+    "grunt": "0.4.4",
+    "grunt-contrib-jshint": "0.9.0",
+    "grunt-jsonlint": "1.0.4",
+    "grunt-shell": "0.6.4",
+    "node-jqunit": "~1.1.3"
+  }
+}

@@ -24,7 +24,7 @@
     "kettle": "git://github.com/amb26/kettle.git#d808f3d5e326265aab9aaa1014703d75fa8ef0d0",
     "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#6324680c88d0fbc3af57307a4ea9fea8010ce019",
     "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#84279ed065b0429eb71b7f13a17916353362263a",
-    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#2d03d8571f51e778178e3c4c546b44669aa54313",
+    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#36e1e3bd16bb1a34e5db74c772eeec0b74f78e85",
     "grunt": "0.4.4",
     "grunt-contrib-jshint": "0.9.0",
     "grunt-jsonlint": "1.0.4",

@@ -3,11 +3,10 @@
     A component to relay model changes to and from the browser's location bar.  See the docs for details.
 
 */
-
-"use strict";
 /* global fluid, window, document */
 
 (function () {
+    "use strict";
     var gpii = fluid.registerNamespace("gpii");
 
     fluid.registerNamespace("gpii.locationBar.stateManager.");
@@ -207,4 +206,3 @@
         }
     });
 })();
-

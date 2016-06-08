@@ -1,3 +1,4 @@
+/* eslint-env node */
 "use strict";
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
@@ -127,7 +128,3 @@ fluid.defaults("gpii.locationBar.tests.binder.environment", {
 });
 
 gpii.locationBar.tests.binder.environment();
-
-
-
-

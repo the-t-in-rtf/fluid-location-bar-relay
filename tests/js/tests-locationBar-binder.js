@@ -3,7 +3,7 @@
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
 
-require("./fixtures");
+require("./lib/fixtures");
 
 fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
     gradeNames: ["gpii.locationBar.tests.caseHolder"],
@@ -119,7 +119,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
 
 fluid.defaults("gpii.locationBar.tests.binder.environment", {
     gradeNames: ["gpii.locationBar.tests.environment"],
-    endpoint:   "tests/static/tests-locationBar-binder.html?radio=two",
+    endpoint:   "tests/static/tests-locationBar-binder.html?radio=%22two%22",
     components: {
         caseHolder: {
             type: "gpii.locationBar.tests.binder.caseHolder"

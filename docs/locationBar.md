@@ -35,6 +35,11 @@ the same page is not tested, and may result in unwanted behavior like:
 
 You have been warned...
 
+## Query String Encoding
+
+All query string values are encoded and decoded using the functions provided by the [gpii-express](http://github.com/GPII/gpii-express/)
+package.   See that package for more details.
+
 ## Component Options
 
 | Option               | Type        | Description |
@@ -50,3 +55,12 @@ You have been warned...
 | `rules.queryToModel` | `{Object}`  | Rules that control what (if any) query data should be applied as a change to the current model.  This only takes place when the component is created, and only if `queryToModel` is enabled. |
 | `rules.stateToModel` | `{Object}`  | Rules that control what (if any) state data should be applied as a change to the current model. This is only relevant if `stateToModel` is enabled. |
 | `stateToModel`       | `{Boolean}` | If this is `true`, If this is `true`, listen for history changes and update the model with the saved state. |
+
+On startup, the following happens in order:
+
+1. If `queryToModel` is `true` (as it is by default), any data in the query string is applied to the model as a change.
+2. If `modelToState` is `true` (as it is by default), any data in the initial model is relayed to the browser history as part of the current state.
+
+From that point on, any model changes are relayed to the state if `modelToState` is `true`, and to the URL (as query
+string data) if `modelToQuery` is `true`.  State changes (hitting the browser's "back" button, for example) are monitored,
+and if `stateToModel` is `true`, then the model is updated to reflect its previous values.

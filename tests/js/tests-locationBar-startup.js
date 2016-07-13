@@ -3,7 +3,7 @@
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
 
-require("./fixtures");
+require("./lib/fixtures");
 
 fluid.registerNamespace("gpii.locationBar.tests.startup");
 

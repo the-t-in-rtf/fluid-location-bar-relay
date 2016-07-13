@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
+    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#52b1701d46868eeb3943d6d85bba09eba47938ce",
     "infusion": "2.0.0-dev.20160519T222603Z.754d2c6"
   },
   "devDependencies": {
@@ -24,7 +25,6 @@
     "eslint": "2.11.1",
     "kettle": "git://github.com/amb26/kettle.git#d808f3d5e326265aab9aaa1014703d75fa8ef0d0",
     "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#f1ade44e0be4990a2400e54061a5557e634a13a8",
-    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#52b1701d46868eeb3943d6d85bba09eba47938ce",
     "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#bb64399e45417baa18aa943b8e98ef6e0f50b321",
     "grunt": "1.0.1",
     "grunt-eslint": "18.1.0",

@@ -17,19 +17,18 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
-    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#52b1701d46868eeb3943d6d85bba09eba47938ce",
+    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#2f224862730bca57fa1f036f24f26e1d43748419",
     "infusion": "2.0.0-dev.20160519T222603Z.754d2c6"
   },
   "devDependencies": {
-    "bower": "1.7.2",
-    "eslint": "2.11.1",
-    "kettle": "git://github.com/amb26/kettle.git#d808f3d5e326265aab9aaa1014703d75fa8ef0d0",
-    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#f1ade44e0be4990a2400e54061a5557e634a13a8",
+    "eslint": "3.2.2",
+    "fluid-grunt-eslint": "18.1.1",
+    "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#5435124165ed02d85920c61ae75cfbe0446f87fe",
     "gpii-webdriver": "git://github.com/the-t-in-rtf/gpii-webdriver#88d3628528ddffbee532fb84fcab4772e9c0c2a8",
     "grunt": "1.0.1",
-    "grunt-eslint": "18.1.0",
-    "grunt-jsonlint": "1.0.4",
-    "istanbul": "0.4.3",
+    "grunt-jsonlint": "1.1.0",
+    "kettle": "1.1.0",
+    "istanbul": "0.4.4",
     "node-jqunit": "1.1.4"
   }
 }

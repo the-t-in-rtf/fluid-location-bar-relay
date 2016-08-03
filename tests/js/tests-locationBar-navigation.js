@@ -18,67 +18,67 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
         name: "Testing 'back' and 'forward' navigation...",
         tests: [
             {
-                name: "Confirm that data is synchronized correctly on startup...",
+                name: "Confirm that backward and forward navigation work as expected...",
                 type: "test",
                 sequence: [
                     {
-                        func: "{testEnvironment}.browser.goto",
+                        func: "{testEnvironment}.webdriver.get",
                         args: ["{testEnvironment}.options.startUrl"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onLoaded",
-                        listener: "{testEnvironment}.browser.evaluate",
+                        event:    "{testEnvironment}.webdriver.events.onGetComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
                         args:     [gpii.locationBar.tests.navigation.applyChange, "number", 90]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model.number"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The model should have been updated after our first change...", 90, "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.evaluate",
+                        func: "{testEnvironment}.webdriver.executeScript",
                         args: [gpii.locationBar.tests.navigation.applyChange, "number", 210]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model.number"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The model should have been updated after our second change...", 210, "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.back",
-                        args: []
+                        func: "{testEnvironment}.webdriver.navigateHelper",
+                        args: ["back"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onBackComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
+                        event:    "{testEnvironment}.webdriver.events.onNavigateHelperComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model.number"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["We should see the previous value after hitting the back button...", 90, "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.forward",
-                        args: []
+                        func: "{testEnvironment}.webdriver.navigateHelper",
+                        args: ["forward"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onForwardComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model.number"]
+                        event:    "{testEnvironment}.webdriver.events.onNavigateHelperComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model.number"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["We should see the next value after hitting the forward button...", 210, "{arguments}.0"]
                     }
@@ -98,4 +98,4 @@ fluid.defaults("gpii.locationBar.tests.navigation.environment", {
     }
 });
 
-gpii.locationBar.tests.navigation.environment();
+gpii.test.webdriver.allBrowsers({ baseTestEnvironment: "gpii.locationBar.tests.navigation.environment" });

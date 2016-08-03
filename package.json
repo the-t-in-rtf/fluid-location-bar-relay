@@ -25,7 +25,7 @@
     "eslint": "2.11.1",
     "kettle": "git://github.com/amb26/kettle.git#d808f3d5e326265aab9aaa1014703d75fa8ef0d0",
     "gpii-binder": "git://github.com/the-t-in-rtf/gpii-binder#f1ade44e0be4990a2400e54061a5557e634a13a8",
-    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#bb64399e45417baa18aa943b8e98ef6e0f50b321",
+    "gpii-webdriver": "git://github.com/the-t-in-rtf/gpii-webdriver#88d3628528ddffbee532fb84fcab4772e9c0c2a8",
     "grunt": "1.0.1",
     "grunt-eslint": "18.1.0",
     "grunt-jsonlint": "1.0.4",

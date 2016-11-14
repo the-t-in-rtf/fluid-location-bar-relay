@@ -44,17 +44,17 @@ package.   See that package for more details.
 
 | Option               | Type        | Description |
 | -------------------- | ----------- | ----------- |
-| `addNewHistoryEntry` | `{Boolean}` | If this is `true`, add a new history entry for each model change.  If this is `false`, update the current history entry instead.  Set to `true` by default. |
+| `addNewHistoryEntry` | `{Boolean}` | If this is `true`, add a new history entry for each model change.  If this is `false`, update the current history entry instead.  Defaults to `true`. |
 | `modelListener`      | `{Object}`  | The [model listener definition block](http://docs.fluidproject.org/infusion/development/ChangeApplierAPI.html#model-listener-declaration) that controls which model changes are listened to. You should not need to change this. |
-| `modelToQuery`       | `{Boolean}` | If this is `true`, publish the model to the location bar on startup, and when the model changes. |
-| `modelToState`       | `{Boolean}` | If this is `true`, save the model to the state when creating history entries. |
-| `queryToModel`       | `{Boolean}` | If this is `true`, parse the query on startup and update the model (see below for rules). |
+| `modelToQuery`       | `{Boolean}` | If this is `true`, publish the model to the location bar on startup, and when the model changes.  Defaults to `true`. |
+| `modelToState`       | `{Boolean}` | If this is `true`, save the model to the state when creating history entries.  Defaults to `true`. |
+| `queryToModel`       | `{Boolean}` | If this is `true`, parse the query on startup and update the model (see below for rules).  Defaults to `true`. |
 | `rules`              | `{Object}`  | The model transformation rules that govern how information is relayed (see individual rules below for details). This option is not merged, which means any options you define will override inherited options completely. |
 | `rules.modelToQuery` | `{Object}`  | Rules that control what (if any) model data is converted into query parameters in the current window's location.  The final output is a JSON object keyed by the query parameter name.  Each key's contents will be converted to a string using `JSON.stringify()` and URL encoded. Only relevant if `modelToQuery` is enabled. |
 | `rules.modelToState` | `{Object}`  | Rules that control what (if any) model data should be stored in the browser's history.  This is only relevant if `modelToState` is enabled. |
 | `rules.queryToModel` | `{Object}`  | Rules that control what (if any) query data should be applied as a change to the current model.  This only takes place when the component is created, and only if `queryToModel` is enabled. |
 | `rules.stateToModel` | `{Object}`  | Rules that control what (if any) state data should be applied as a change to the current model. This is only relevant if `stateToModel` is enabled. |
-| `stateToModel`       | `{Boolean}` | If this is `true`, If this is `true`, listen for history changes and update the model with the saved state. |
+| `stateToModel`       | `{Boolean}` | If this is `true`, listen for history changes and update the model with the saved state.  Defaults to `true`. |
 
 On startup, the following happens in order:
 

@@ -17,15 +17,15 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
-    "gpii-express": "1.0.0",
-    "infusion": "2.0.0-dev.20161027T155641Z.0bcd507"
+    "gpii-express": "1.0.1",
+    "infusion": "2.0.0-dev.20161124T191742Z.17a345b"
   },
   "devDependencies": {
-    "eslint": "3.10.2",
+    "eslint": "3.11.1",
     "eslint-config-fluid": "1.0.0",
     "fluid-grunt-eslint": "18.1.2",
     "gpii-binder": "1.0.0-dev.20161123T123137Z.a776add",
-    "gpii-webdriver": "1.0.0-dev.20161124T133029Z.b454037",
+    "gpii-webdriver": "1.0.0-dev.20161125T164054Z.becc872",
     "grunt": "1.0.1",
     "grunt-jsonlint": "1.1.0",
     "istanbul": "0.4.5",

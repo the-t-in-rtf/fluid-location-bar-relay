@@ -9,7 +9,7 @@ apps:
     software_stack: nodejs
     software_stack_version: lts
     folder:
-      dest: /app/gpii-mail-test
+      dest: /app/gpii-location-bar-relay
     run_in: fedora
     deploy: false
     setup:

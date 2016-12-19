@@ -214,7 +214,7 @@ chalk@~0.4.0:
     has-color "~0.1.0"
     strip-ansi "~0.1.0"
 
-chromedriver@^2.25.2:
+chromedriver@2.25.2:
   version "2.25.2"
   resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-2.25.2.tgz#20bfcf1f84ede626be39abf94454a87c1a2ef0b5"
   dependencies:
@@ -813,11 +813,11 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-gpii-binder@1.0.0-dev.20161123T123137Z.a776add:
-  version "1.0.0-dev.20161123T123137Z.a776add"
-  resolved "https://registry.yarnpkg.com/gpii-binder/-/gpii-binder-1.0.0-dev.20161123T123137Z.a776add.tgz#4d44015699fec6f6046e5859130254a118606442"
+gpii-binder@1.0.0-dev.20161219T173834Z.5ecfb7b:
+  version "1.0.0-dev.20161219T173834Z.5ecfb7b"
+  resolved "https://registry.yarnpkg.com/gpii-binder/-/gpii-binder-1.0.0-dev.20161219T173834Z.5ecfb7b.tgz#912dead98c27c10d34f52cdc0c75b75bb677f7e9"
   dependencies:
-    infusion "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
+    infusion "2.0.0-dev.20161219T170555Z.5778f7e"
 
 gpii-express@1.0.1:
   version "1.0.1"
@@ -830,13 +830,13 @@ gpii-express@1.0.1:
     infusion "2.0.0-dev.20161027T155641Z.0bcd507"
     resolve "1.1.7"
 
-gpii-webdriver@1.0.0-dev.20161125T164054Z.becc872:
-  version "1.0.0-dev.20161125T164054Z.becc872"
-  resolved "https://registry.yarnpkg.com/gpii-webdriver/-/gpii-webdriver-1.0.0-dev.20161125T164054Z.becc872.tgz#a6c23b792380393cb53d352028f4c027fcfad60f"
+gpii-webdriver@1.0.0-dev.20161219T175107Z.5a2a1c1:
+  version "1.0.0-dev.20161219T175107Z.5a2a1c1"
+  resolved "https://registry.yarnpkg.com/gpii-webdriver/-/gpii-webdriver-1.0.0-dev.20161219T175107Z.5a2a1c1.tgz#d714d34564c69c18a8b30b0e71e8a58ba20a90ef"
   dependencies:
     accessibility-developer-tools "2.11.0"
     axe-core "2.0.7"
-    infusion "2.0.0-dev.20161027T155641Z.0bcd507"
+    infusion "2.0.0-dev.20161219T170555Z.5778f7e"
     selenium-webdriver "3.0.1"
 
 graceful-fs@^4.1.2:
@@ -1000,15 +1000,9 @@ infusion@2.0.0-dev.20161027T155641Z.0bcd507:
   dependencies:
     fluid-resolve "1.2.0"
 
-infusion@2.0.0-dev.20161124T191742Z.17a345b:
-  version "2.0.0-dev.20161124T191742Z.17a345b"
-  resolved "https://registry.yarnpkg.com/infusion/-/infusion-2.0.0-dev.20161124T191742Z.17a345b.tgz#8266bc688d1a0afb399aeced06bc3b46efa81b5b"
-  dependencies:
-    fluid-resolve "1.2.0"
-
-"infusion@git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9":
-  version "2.0.0"
-  resolved "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
+infusion@2.0.0-dev.20161219T170555Z.5778f7e:
+  version "2.0.0-dev.20161219T170555Z.5778f7e"
+  resolved "https://registry.yarnpkg.com/infusion/-/infusion-2.0.0-dev.20161219T170555Z.5778f7e.tgz#3568b448d1e6c0a491e8ad45d6c592de3b7fd4bf"
   dependencies:
     fluid-resolve "1.2.0"
 
@@ -1682,13 +1676,9 @@ selenium-webdriver@3.0.1:
     tmp "0.0.30"
     xml2js "^0.4.17"
 
-"semver@2 || 3 || 4":
+"semver@2 || 3 || 4", "semver@2 || 3 || 4 || 5":
   version "4.3.6"
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
-
-"semver@2 || 3 || 4 || 5":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
 send@0.14.1:
   version "0.14.1"

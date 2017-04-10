@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
-    "gpii-express": "1.0.2",
+    "gpii-express": "1.0.6-dev.20170410T073824Z.533a56f",
     "infusion": "3.0.0-dev.20170127T130413Z.103de6e"
   },
   "devDependencies": {

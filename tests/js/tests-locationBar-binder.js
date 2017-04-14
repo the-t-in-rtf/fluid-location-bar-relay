@@ -139,4 +139,4 @@ fluid.defaults("gpii.locationBar.tests.binder.environment", {
     }
 });
 
-gpii.test.webdriver.allBrowsers({ baseTestEnvironment: "gpii.locationBar.tests.binder.environment" });
+gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.locationBar.tests.binder.environment" });

@@ -4,6 +4,7 @@
   "description": "A Fluid component to relay changes in model state to and from the browser's location bar.",
   "main": "src/js/locationBar.js",
   "scripts": {
+    "pretest": "node node_modules/rimraf/bin.js coverage/* instrumented/* reports/*",
     "test": "node node_modules/istanbul/lib/cli.js cover tests/all-tests.js"
   },
   "repository": {
@@ -18,7 +19,7 @@
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
     "gpii-express": "1.0.6",
-    "infusion": "3.0.0-dev.20170127T130413Z.103de6e"
+    "infusion": "3.0.0-dev.20170322T234120Z.278de35"
   },
   "devDependencies": {
     "chromedriver": "2.27.2",

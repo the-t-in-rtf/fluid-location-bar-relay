@@ -1,8 +1,9 @@
+/* eslint-env node */
 "use strict";
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
 
-require("./fixtures");
+require("./lib/fixtures");
 
 fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
     gradeNames: ["gpii.locationBar.tests.caseHolder"],
@@ -14,27 +15,27 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                 type: "test",
                 sequence: [
                     {
-                        func: "{testEnvironment}.browser.goto",
+                        func: "{testEnvironment}.webdriver.get",
                         args: ["{testEnvironment}.options.startUrl"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onLoaded",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
+                        event:    "{testEnvironment}.webdriver.events.onGetComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The model should have been updated based on the query...", "two", "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.evaluate",
-                        args: [gpii.test.browser.val, "input[name='radio']:checked"]
+                        func: "{testEnvironment}.webdriver.findElement",
+                        args: [{ css: "input[name='radio']:checked"} ]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
-                        listener: "jqUnit.assertEquals",
-                        args:     ["The form element should have been updated from the query...", "two", "{arguments}.0"]
+                        event:    "{testEnvironment}.webdriver.events.onFindElementComplete",
+                        listener: "gpii.test.webdriver.testElementValue",
+                        args:     ["The form element should have been updated from the query...", "{arguments}.0", "two"] // message, element, expectedValue, jqUnitFn
                     }
                 ]
             },
@@ -43,30 +44,36 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                 type: "test",
                 sequence: [
                     {
-                        func: "{testEnvironment}.browser.goto",
+                        func: "{testEnvironment}.webdriver.get",
                         args: ["{testEnvironment}.options.startUrl"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onLoaded",
-                        listener: "{testEnvironment}.browser.click",
-                        args:     ["input[value='three']"]
+                        event:    "{testEnvironment}.webdriver.events.onGetComplete",
+                        listener: "{testEnvironment}.webdriver.findElement",
+                        args:     [{ css: "input[value='three']" }]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onClickComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
+                        event:    "{testEnvironment}.webdriver.events.onFindElementComplete",
+                        listener: "{testEnvironment}.webdriver.actionsHelper",
+                        // We must call "click" with a specific element located in the previous call, i.e. {arguments}.0
+                        args:     [[{fn: "click", args: ["{arguments}.0"]}]]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onActionsHelperComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
+                    },
+                    {
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The model should have been updated based on the form change...", "three", "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.evaluate",
-                        args: [gpii.test.browser.getGlobalValue, "window.history.state.radio"]
+                        func: "{testEnvironment}.webdriver.executeScript",
+                        args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state.radio"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The state should have been updated based on the form change...", "three", "{arguments}.0"]
                     }
@@ -77,36 +84,42 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                 type: "test",
                 sequence: [
                     {
-                        func: "{testEnvironment}.browser.goto",
+                        func: "{testEnvironment}.webdriver.get",
                         args: ["{testEnvironment}.options.startUrl"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onLoaded",
-                        listener: "{testEnvironment}.browser.click",
-                        args:     ["input[value='one']"]
+                        event:    "{testEnvironment}.webdriver.events.onGetComplete",
+                        listener: "{testEnvironment}.webdriver.findElement",
+                        args:     [{ css: "input[value='one']" }]
+                    },
+                    {
+                        event:    "{testEnvironment}.webdriver.events.onFindElementComplete",
+                        listener: "{testEnvironment}.webdriver.actionsHelper",
+                        // We must call "click" with a specific element located in the previous call, i.e. {arguments}.0
+                        args:     [[{fn: "click", args: ["{arguments}.0"]}]]
                     },
                     // Sanity check to confirm that the model was indeed updated based on our click.
                     {
-                        event:    "{testEnvironment}.browser.events.onClickComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
+                        event:    "{testEnvironment}.webdriver.events.onActionsHelperComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The model should have been updated based on the form change...", "one", "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.back",
-                        args: []
+                        func: "{testEnvironment}.webdriver.navigateHelper",
+                        args: ["back"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onBackComplete",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "combinedComponent.model.radio"]
+                        event:    "{testEnvironment}.webdriver.events.onNavigateHelperComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertEquals",
                         args:     ["The model should have been updated based on the second form change...", "two", "{arguments}.0"]
                     }
@@ -118,7 +131,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
 
 fluid.defaults("gpii.locationBar.tests.binder.environment", {
     gradeNames: ["gpii.locationBar.tests.environment"],
-    endpoint:   "tests/static/tests-locationBar-binder.html?radio=two",
+    endpoint:   "tests/static/tests-locationBar-binder.html?radio=%22two%22",
     components: {
         caseHolder: {
             type: "gpii.locationBar.tests.binder.caseHolder"
@@ -126,8 +139,4 @@ fluid.defaults("gpii.locationBar.tests.binder.environment", {
     }
 });
 
-gpii.locationBar.tests.binder.environment();
-
-
-
-
+gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.locationBar.tests.binder.environment" });

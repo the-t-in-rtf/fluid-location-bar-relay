@@ -3,65 +3,22 @@
     A component to relay model changes to and from the browser's location bar.  See the docs for details.
 
 */
-
-"use strict";
 /* global fluid, window, document */
 
 (function () {
+    "use strict";
     var gpii = fluid.registerNamespace("gpii");
 
     fluid.registerNamespace("gpii.locationBar.stateManager.");
 
-    // Parse a JSON object and return a query string (no leading question mark)
-    gpii.locationBar.stateManager.jsonToQuery = function (data) {
-        var queryParts = [];
-
-        fluid.each(data, function (value, key) {
-            // If we are passed a literal string, we cannot continue.
-            if (!key) { return; }
-
-            // Strip null and undefined values to keep the query string short, while preserving `false` values.
-            if (value === undefined || value === null) { return; }
-
-            var valueToEncode = typeof value === "string" ? value : JSON.stringify(value);
-            var encodedKey   = encodeURIComponent(key);
-            var encodedValue = encodeURIComponent(valueToEncode);
-            queryParts.push(encodedKey + "=" + encodedValue);
-        });
-
-        return queryParts.join("&");
-    };
-
     // Parse a query string and return a JSON object.
     gpii.locationBar.stateManager.queryToJson = function (queryString) {
-        var queryData = {};
-
         // Remove the leading question mark if found.
         if (queryString.indexOf("?") === 0) {
             queryString = queryString.substring(1);
         }
 
-        // Split by ampersands
-        var queryParts = queryString.split("&");
-        queryParts.forEach(function (queryPart) {
-            var matches = queryPart.match(/^([^=]+)=(.+)$/);
-            if (matches) {
-                var key   = matches[1];
-
-                var stringValue = decodeURIComponent(matches[2]);
-                var value = stringValue;
-                try {
-                    value = JSON.parse(stringValue);
-                }
-                catch (e) {
-                    // Do nothing
-                }
-
-                queryData[key] = value;
-            }
-        });
-
-        return queryData;
+        return gpii.express.querystring.decode(queryString);
     };
 
     // Load model data from the query string and apply it to the model.
@@ -88,7 +45,7 @@
         // The URL will change if `that.options.modelToQuery` is enabled.
         if (that.options.modelToQuery) {
             var queryData = fluid.model.transformWithRules(that.model, that.options.rules.modelToQuery);
-            var queryString = gpii.locationBar.stateManager.jsonToQuery(queryData);
+            var queryString = gpii.express.querystring.encodeObject(queryData);
 
             // Combine the "origin" with the "path" to get the URL minus any existing query data.
             stateUrl = window.location.origin + window.location.pathname + "?" + queryString;
@@ -145,15 +102,21 @@
         },
         listeners: {
             "onCreate.queryToModel": {
-                funcName: "gpii.locationBar.stateManager.queryToModel",
+                funcName:  "gpii.locationBar.stateManager.queryToModel",
+                priority:  "first",
+                // namespace: "queryToModel",
                 args:     ["{that}"]
             },
             "onCreate.modelToState": {
                 funcName: "gpii.locationBar.stateManager.updateState",
+                priority:  "after:queryToModel",
+                // namespace: "modelToState",
                 args:     ["{that}", false]
             },
             "onCreate.bindStateToModel": {
                 funcName: "gpii.locationBar.stateManager.bindStateToModel",
+                priority:  "after:modelToState",
+                // namespace: "bindStateToModel",
                 args:     ["{that}"]
             }
         },
@@ -207,4 +170,3 @@
         }
     });
 })();
-

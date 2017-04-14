@@ -1,8 +1,9 @@
+/* eslint-env node */
 "use strict";
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
 
-require("./fixtures");
+require("./lib/fixtures");
 
 fluid.registerNamespace("gpii.locationBar.tests.startup");
 
@@ -21,34 +22,34 @@ fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
                 type: "test",
                 sequence: [
                     {
-                        func: "{testEnvironment}.browser.goto",
+                        func: "{testEnvironment}.webdriver.get",
                         args: ["{testEnvironment}.options.startUrl"]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onLoaded",
-                        listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.test.browser.getGlobalValue, "locationBarComponent.model"]
+                        event:    "{testEnvironment}.webdriver.events.onGetComplete",
+                        listener: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertDeepEq",
                         args:     ["The model should have been updated based on the query parameter...", "{testEnvironment}.options.expected.modelAfterStartup", "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.evaluate",
-                        args: [gpii.test.browser.getGlobalValue, "window.history.state"]
+                        func: "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertDeepEq",
                         args:     ["The window history state should include updates from the location bar and our default data...", "{testEnvironment}.options.expected.modelAfterStartup", "{arguments}.0"]
                     },
                     {
-                        func: "{testEnvironment}.browser.evaluate",
+                        func: "{testEnvironment}.webdriver.executeScript",
                         args: [gpii.locationBar.tests.startup.getQueryJson]
                     },
                     {
-                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertDeepEq",
                         args:     ["The query string in the location bar should include updates from the location bar and our default data...", "{testEnvironment}.options.expected.modelAfterStartup", "{arguments}.0"]
                     }
@@ -78,6 +79,4 @@ fluid.defaults("gpii.locationBar.tests.startup.environment", {
     }
 });
 
-gpii.locationBar.tests.startup.environment();
-
-
+gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.locationBar.tests.startup.environment" });

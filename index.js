@@ -4,6 +4,7 @@
     the standard `%package-name/path/to/content` notation.
 
  */
+/* eslint-env node */
 "use strict";
 var fluid = require("infusion");
 fluid.module.register("gpii-location-bar-relay", __dirname, require);

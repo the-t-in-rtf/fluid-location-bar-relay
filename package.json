@@ -18,20 +18,19 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
-    "gpii-express": "1.0.7-dev.20170417T134005Z.8acdf26",
+    "gpii-express": "1.0.7",
     "infusion": "3.0.0-dev.20170322T234120Z.278de35"
   },
   "devDependencies": {
-    "chromedriver": "2.27.2",
     "eslint": "3.19.0",
     "eslint-config-fluid": "1.1.0",
     "fluid-grunt-eslint": "18.1.2",
-    "gpii-binder": "1.0.0",
-    "gpii-webdriver": "1.0.0-dev.20170417T195730Z.af1c257",
+    "gpii-binder": "1.0.2",
+    "gpii-webdriver": "1.0.1",
     "grunt": "1.0.1",
     "grunt-jsonlint": "1.1.0",
     "istanbul": "0.4.5",
-    "kettle": "git://github.com/the-t-in-rtf/kettle#ae8462ae9f7169db72de89d6bbe0f7b1a12da657",
+    "kettle": "1.5.0",
     "node-jqunit": "1.1.4"
   }
 }

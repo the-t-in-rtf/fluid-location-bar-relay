@@ -1,0 +1,20 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:ms:20170412':
+    - gpii-express > body-parser > debug > ms:
+        patched: '2017-05-25T22:59:02.278Z'
+    - gpii-express > express > debug > ms:
+        patched: '2017-05-25T22:59:02.278Z'
+    - gpii-express > express > send > debug > ms:
+        patched: '2017-05-25T22:59:02.278Z'
+    - gpii-express > express > serve-static > send > debug > ms:
+        patched: '2017-05-25T22:59:02.278Z'
+    - gpii-express > express > send > ms:
+        patched: '2017-05-25T22:59:02.278Z'
+    - gpii-express > express > serve-static > send > ms:
+        patched: '2017-05-25T22:59:02.278Z'
+    - gpii-express > express-session > debug > ms:
+        patched: '2017-05-25T22:59:02.278Z'

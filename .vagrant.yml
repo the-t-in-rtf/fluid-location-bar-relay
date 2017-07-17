@@ -21,8 +21,6 @@ setup_job:
     - choco install chromedriver -y
     - do.ps1 -c "npm install -g node-inspector"
     - do.ps1 -c "npm config set bin-links false --global"
-    - "net use v: \\\\vboxsrv\\vagrant  /yes"
-    - "do.ps1 -c 'net use v: \\\\VBOXSVR\\vagrant /yes'"
 
 test_job:
   stage: test          # name of the stage

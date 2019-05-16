@@ -2,13 +2,16 @@
 
 A component that relays changes between its model and both the browser's location bar and history.  It:
 
-1. Publishes model changes to the query string portion of the location bar.   This completely replaces the current query data in the location bar, so you should preserve any variables you care about as part of your model and rules.
+1. Publishes model changes to the query string portion of the location bar.   This completely replaces the current query
+   data in the location bar, so you should preserve any variables you care about as part of your model and rules.
 2. Parses the initial query string and publishes that data to the model.
 3. Publishes model data to the browser history `state` object.
-4. Publishes state data from the browser history to the model when the state changes (such as when the back and forward button are hit).
+4. Publishes state data from the browser history to the model when the state changes (such as when the back and forward
+   button are hit).
 
 Each of these interactions is enabled by default, but can be individually disabled. See "Component Options" below for
-more details.  Each of these interactions is controlled by [model transformation rules](http://docs.fluidproject.org/infusion/development/ModelTransformationAPI.html#fluid-model-transformwithrules-source-rules-options-).
+more details.  Each of these interactions is controlled by [model transformation
+rules](http://docs.fluidproject.org/infusion/development/ModelTransformationAPI.html#fluid-model-transformwithrules-source-rules-options-).
 This allows you to:
 
 1. Control which options are relayed.
@@ -31,14 +34,15 @@ This component is only intended to be used once on a given page.  The behavior w
 the same page is not tested, and may result in unwanted behavior like:
 
 1. Model data being published from one component to another unexpectedly.
-2. Model data stored in the browser history or location bar being lost when a second, third, etc. component attempts to save its changes.
+2. Model data stored in the browser history or location bar being lost when a second, third, etc. component attempts to
+   save its changes.
 
 You have been warned...
 
 ## Query String Encoding
 
-All query string values are encoded and decoded using the functions provided by the [gpii-express](http://github.com/GPII/gpii-express/)
-package.   See that package for more details.
+All query string values are encoded and decoded using the functions provided by the
+[gpii-express](http://github.com/GPII/gpii-express/) package.   See that package for more details.
 
 ## Component Options
 
@@ -59,8 +63,9 @@ package.   See that package for more details.
 On startup, the following happens in order:
 
 1. If `queryToModel` is `true` (as it is by default), any data in the query string is applied to the model as a change.
-2. If `modelToState` is `true` (as it is by default), any data in the initial model is relayed to the browser history as part of the current state.
+2. If `modelToState` is `true` (as it is by default), any data in the initial model is relayed to the browser history as
+   part of the current state.
 
 From that point on, any model changes are relayed to the state if `modelToState` is `true`, and to the URL (as query
-string data) if `modelToQuery` is `true`.  State changes (hitting the browser's "back" button, for example) are monitored,
-and if `stateToModel` is `true`, then the model is updated to reflect its previous values.
+string data) if `modelToQuery` is `true`.  State changes (hitting the browser's "back" button, for example) are
+monitored, and if `stateToModel` is `true`, then the model is updated to reflect its previous values.

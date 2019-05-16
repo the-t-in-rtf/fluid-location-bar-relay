@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/GPII/gpii-location-bar-relay",
   "dependencies": {
-    "gpii-express": "1.0.9",
-    "infusion": "3.0.0-dev.20170724T165035Z.eee50c1"
+    "gpii-express": "1.0.15",
+    "infusion": "3.0.0-dev.20190328T144119Z.ec44dbfab"
   },
   "devDependencies": {
     "eslint": "4.3.0",

@@ -2,25 +2,25 @@
     <head>
         <title>Unit Tests for location bar in combination with the "binder"...</title>
         <!-- Bring in jQuery and other dependencies -->
-        <script type="text/javascript" src="/nm/infusion/src/lib/jquery/core/js/jquery.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
 
         <!-- Bring in fluid dependencies -->
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidDocument.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/Fluid.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidIoC.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/DataBinding.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/FluidView.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformation.js"></script>
-        <script type="text/javascript" src="/nm/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
 
-        <script type="text/javascript" src ="/nm/gpii-binder/src/js/binder.js"></script>
+        <script type="text/javascript" src ="../../node_modules/gpii-binder/src/js/binder.js"></script>
 
         <!-- gpii-express dependency -->
-        <script type="text/javascript" src="/nm/gpii-express/src/js/lib/querystring-coding.js"></script>
+        <script type="text/javascript" src="../../node_modules/gpii-express/src/js/lib/querystring-coding.js"></script>
 
-        <script type="text/javascript" src ="/src/js/locationBar.js"></script>
-        <script type="text/javascript" src="/tests/static/js/tests-locationBar-binder.js"></script>
+        <script type="text/javascript" src ="../../src/js/locationBar.js"></script>
+        <script type="text/javascript" src="./js/tests-locationBar-binder.js"></script>
     </head>
     <body>
         <form class="locationBar-binder-form">
@@ -47,7 +47,7 @@
         </form>
 
         <script type="text/javascript">
-            var combinedComponent = gpii.locationBar.tests.binder(".locationBar-binder-form");
+            var combinedComponent = gpii.tests.locationBar.binder(".locationBar-binder-form");
         </script>
     </body>
 </html>

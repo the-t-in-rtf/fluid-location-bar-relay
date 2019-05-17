@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    fluid.defaults("gpii.locationBar.tests.binder", {
+    fluid.defaults("gpii.tests.locationBar.binder", {
         gradeNames: ["gpii.locationBar", "fluid.viewComponent"],
         selectors: {
             radio: "input[name='radio']"

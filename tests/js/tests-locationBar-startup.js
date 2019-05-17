@@ -5,15 +5,15 @@ var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.locationBar.tests.startup");
+fluid.registerNamespace("gpii.tests.locationBar.startup");
 
 /* globals window */
-gpii.locationBar.tests.startup.getQueryJson = function () {
+gpii.tests.locationBar.startup.getQueryJson = function () {
     return gpii.locationBar.stateManager.queryToJson(window.location.search);
 };
 
-fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
-    gradeNames: ["gpii.locationBar.tests.caseHolder"],
+fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
+    gradeNames: ["gpii.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Testing the location bar startup process...",
         tests: [
@@ -23,7 +23,7 @@ fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -46,7 +46,7 @@ fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.locationBar.tests.startup.getQueryJson]
+                        args: [gpii.tests.locationBar.startup.getQueryJson]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -59,9 +59,10 @@ fluid.defaults("gpii.locationBar.tests.startup.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.locationBar.tests.startup.environment", {
-    gradeNames: ["gpii.locationBar.tests.environment"],
-    endpoint:   "tests/static/tests-locationBar.html?number=9",
+// TODO: Collect coverage data.
+fluid.defaults("gpii.tests.locationBar.startup.environment", {
+    gradeNames: ["gpii.test.webdriver.testEnvironment"],
+    startFile:   "%gpii-location-bar-relay/tests/static/tests-locationBar.html?number=9",
     expected: {
         modelAfterStartup: {
             number: 9,
@@ -74,9 +75,9 @@ fluid.defaults("gpii.locationBar.tests.startup.environment", {
     },
     components: {
         caseHolder: {
-            type: "gpii.locationBar.tests.startup.caseHolder"
+            type: "gpii.tests.locationBar.startup.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.locationBar.tests.startup.environment" });
+gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.startup.environment" });

@@ -5,15 +5,15 @@ var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.locationBar.tests.navigation");
+fluid.registerNamespace("gpii.tests.locationBar.navigation");
 
-gpii.locationBar.tests.navigation.applyChange = function (path, value) {
+gpii.tests.locationBar.navigation.applyChange = function (path, value) {
     var component = fluid.getGlobalValue("locationBarComponent");
     component.applier.change(path, value);
 };
 
-fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
-    gradeNames: ["gpii.locationBar.tests.caseHolder"],
+fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
+    gradeNames: ["gpii.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Testing 'back' and 'forward' navigation...",
         tests: [
@@ -23,12 +23,12 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.locationBar.tests.navigation.applyChange, "number", 90]
+                        args:     [gpii.tests.locationBar.navigation.applyChange, "number", 90]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -42,7 +42,7 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.locationBar.tests.navigation.applyChange, "number", 210]
+                        args: [gpii.tests.locationBar.navigation.applyChange, "number", 210]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -90,12 +90,12 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.locationBar.tests.navigation.applyChange, "number", 90]
+                        args:     [gpii.tests.locationBar.navigation.applyChange, "number", 90]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -109,7 +109,7 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.externalUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.secondFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -134,17 +134,17 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.externalUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.secondFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.get",
-                        args:     ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.locationBar.tests.navigation.applyChange, "number", 90]
+                        args:     [gpii.tests.locationBar.navigation.applyChange, "number", 90]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -200,20 +200,16 @@ fluid.defaults("gpii.locationBar.tests.navigation.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.locationBar.tests.navigation.environment", {
-    gradeNames: ["gpii.locationBar.tests.environment"],
-    endpoint:   "tests/static/tests-locationBar.html",
-    externalUrl: {
-        expander: {
-            funcName: "fluid.stringTemplate",
-            args: ["%baseUrl%endpoint", { baseUrl: "{testEnvironment}.options.url", endpoint: "tests/static/tests-external-page.html"}]
-        }
-    },
+// TODO: Collect coverage data.
+fluid.defaults("gpii.tests.locationBar.navigation.environment", {
+    gradeNames: ["gpii.test.webdriver.testEnvironment"],
+    startFile:   "%gpii-location-bar-relay/tests/static/tests-locationBar.html",
+    secondFile: "%gpii-location-bar-relay/tests/static/tests-external-page.html",
     components: {
         caseHolder: {
-            type: "gpii.locationBar.tests.navigation.caseHolder"
+            type: "gpii.tests.locationBar.navigation.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({browsers: ["chrome"], baseTestEnvironment: "gpii.locationBar.tests.navigation.environment" });
+gpii.test.webdriver.allBrowsers({browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.navigation.environment" });

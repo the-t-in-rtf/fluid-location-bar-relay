@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    fluid.defaults("gpii.locationBar.tests.locationBar", {
+    fluid.defaults("gpii.tests.locationBar.locationBar", {
         gradeNames: ["gpii.locationBar"],
         model: {
             number: 1,

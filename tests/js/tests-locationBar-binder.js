@@ -5,8 +5,8 @@ var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
-    gradeNames: ["gpii.locationBar.tests.caseHolder"],
+fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
+    gradeNames: ["gpii.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Testing the location bar and 'gpii-binder' together...",
         tests: [
@@ -16,7 +16,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -45,7 +45,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -85,7 +85,7 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["{testEnvironment}.options.startUrl"]
+                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -129,14 +129,15 @@ fluid.defaults("gpii.locationBar.tests.binder.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.locationBar.tests.binder.environment", {
-    gradeNames: ["gpii.locationBar.tests.environment"],
-    endpoint:   "tests/static/tests-locationBar-binder.html?radio=%22two%22",
+// TODO: Collect coverage data.
+fluid.defaults("gpii.tests.locationBar.binder.environment", {
+    gradeNames: ["gpii.test.webdriver.testEnvironment"],
+    startFile:   "%gpii-location-bar-relay/tests/static/tests-locationBar-binder.html?radio=%22two%22",
     components: {
         caseHolder: {
-            type: "gpii.locationBar.tests.binder.caseHolder"
+            type: "gpii.tests.locationBar.binder.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.locationBar.tests.binder.environment" });
+gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.binder.environment" });

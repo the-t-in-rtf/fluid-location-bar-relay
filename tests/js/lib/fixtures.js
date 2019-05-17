@@ -2,32 +2,50 @@
 "use strict";
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
+var fs    = require("fs");
+var path  = require("path");
+var mkdirp = require("mkdirp");
 
-require("gpii-express");
 require("../../../");
 
 require("gpii-webdriver");
 gpii.webdriver.loadTestingSupport();
 
-require("./harness.js");
+fluid.registerNamespace("gpii.tests.locationBar.caseHolder");
+
+// Save coverage data to a file.
+gpii.tests.locationBar.caseHolder.saveCoverage = function (that, coverageData) {
+    if (!fluid.jQueryStandalone.isEmptyObject(coverageData)) {
+        var resolvedCoverageDir = fluid.module.resolvePath(that.options.coverageDir);
+        mkdirp.sync(resolvedCoverageDir);
+        var filename = "coverage-" + that.id + "-" + Date.now();
+        var outputPath = path.resolve(resolvedCoverageDir, filename);
+        fs.writeFileSync(outputPath, JSON.stringify(coverageData, null, 2), { encoding: "utf8"});
+        fluid.log("Saved coverage data.");
+    }
+    else {
+        fluid.log("No coverage data to save.");
+    }
+};
 
 // Our test caseHolder (based on a standard one from gpii-test-browser).
-fluid.defaults("gpii.locationBar.tests.caseHolder", {
-    gradeNames: ["gpii.test.webdriver.caseHolder"]
-});
-
-// Our test environment (based on a standard one from gpii-test-browser).
-fluid.defaults("gpii.locationBar.tests.environment", {
-    gradeNames: ["gpii.test.webdriver.testEnvironment.withExpress"],
-    startUrl: {
-        expander: {
-            funcName: "fluid.stringTemplate",
-            args: ["%baseUrl%endpoint", { baseUrl: "{testEnvironment}.options.url", endpoint: "{testEnvironment}.options.endpoint"}]
-        }
-    },
-    components: {
-        express: {
-            type: "gpii.locationBar.tests.harness"
-        }
-    }
+// TODO: Convert this to use sequences once gpii-express and gpii-webdriver are converted.
+fluid.defaults("gpii.tests.locationBar.caseHolder", {
+    gradeNames: ["gpii.test.webdriver.caseHolder"],
+    coverageDir: "%gpii-location-bar-relay/coverage",
+    sequenceEnd: [
+        // Retrieve the coverage data.
+        {
+            func: "{testEnvironment}.webdriver.executeScript",
+            args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.__coverage__"] // functionPath, fnArgs, environment
+        },
+        // Save the coverage data.
+        {
+            event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
+            listener: "gpii.tests.locationBar.caseHolder.saveCoverage",
+            args:     ["{that}", "{arguments}.0"]
+        },
+        { func: "{testEnvironment}.events.stopFixtures.fire", args: [] },
+        { listener: "fluid.identity", event: "{testEnvironment}.events.onFixturesStopped"}
+    ]
 });

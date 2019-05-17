@@ -2,3 +2,5 @@ node_modules
 .idea/
 reports
 .vagrant
+package-lock.json
+instrumented

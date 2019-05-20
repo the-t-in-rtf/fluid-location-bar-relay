@@ -1,6 +1,6 @@
 {
     "name": "gpii-location-bar-relay",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A Fluid component to relay changes in model state to and from the browser's location bar.",
     "main": "src/js/locationBar.js",
     "scripts": {

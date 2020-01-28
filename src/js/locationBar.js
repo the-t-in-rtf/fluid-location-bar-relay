@@ -47,8 +47,10 @@
             var queryData = fluid.model.transformWithRules(that.model, that.options.rules.modelToQuery);
             var queryString = gpii.express.querystring.encodeObject(queryData);
 
+            // Recent versions of Firefox report the origin for files as "null".
+            var origin = window.location.origin === "null" ? "file://" : window.location.origin;
             // Combine the "origin" with the "path" to get the URL minus any existing query data.
-            stateUrl = window.location.origin + window.location.pathname + "?" + queryString;
+            stateUrl = origin + window.location.pathname + "?" + queryString;
         }
 
         // Add a new history entry or replace the existing one, depending on our options.

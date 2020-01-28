@@ -7,6 +7,7 @@ var path  = require("path");
 var mkdirp = require("mkdirp");
 
 require("../../../");
+require("./express.js");
 
 require("gpii-webdriver");
 gpii.webdriver.loadTestingSupport();
@@ -48,4 +49,13 @@ fluid.defaults("gpii.tests.locationBar.caseHolder", {
         { func: "{testEnvironment}.events.stopFixtures.fire", args: [] },
         { listener: "fluid.identity", event: "{testEnvironment}.events.onFixturesStopped"}
     ]
+});
+
+fluid.defaults("gpii.test.locationBar.testEnvironment", {
+    gradeNames: ["gpii.test.webdriver.testEnvironment.withExpress"],
+    components: {
+        express: {
+            type: "gpii.test.locationBar.express"
+        }
+    }
 });

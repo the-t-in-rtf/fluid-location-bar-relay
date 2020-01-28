@@ -23,7 +23,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -90,7 +90,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -109,7 +109,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.secondFile)"]
+                        args: ["{testEnvironment}.options.secondUrl"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -134,12 +134,12 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.secondFile)"]
+                        args: ["{testEnvironment}.options.secondUrl"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -200,11 +200,16 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
     }]
 });
 
-// TODO: Collect coverage data.
 fluid.defaults("gpii.tests.locationBar.navigation.environment", {
-    gradeNames: ["gpii.test.webdriver.testEnvironment"],
-    startFile:   "%gpii-location-bar-relay/tests/static/tests-locationBar.html",
-    secondFile: "%gpii-location-bar-relay/tests/static/tests-external-page.html",
+    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+    path:   "tests/static/tests-locationBar.html",
+    secondPath: "tests/static/tests-external-page.html",
+    secondUrl: {
+        expander: {
+            funcName: "fluid.stringTemplate",
+            args: ["http://localhost:%port/%path", { port: "{that}.options.port", path: "{that}.options.secondPath"}]
+        }
+    },
     components: {
         caseHolder: {
             type: "gpii.tests.locationBar.navigation.caseHolder"

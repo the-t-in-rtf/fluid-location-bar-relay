@@ -16,7 +16,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -45,7 +45,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -85,7 +85,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -129,10 +129,9 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
     }]
 });
 
-// TODO: Collect coverage data.
 fluid.defaults("gpii.tests.locationBar.binder.environment", {
-    gradeNames: ["gpii.test.webdriver.testEnvironment"],
-    startFile:   "%gpii-location-bar-relay/tests/static/tests-locationBar-binder.html?radio=%22two%22",
+    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+    path:   "tests/static/tests-locationBar-binder.html?radio=%22two%22",
     components: {
         caseHolder: {
             type: "gpii.tests.locationBar.binder.caseHolder"

@@ -23,7 +23,7 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
                 sequence: [
                     {
                         func: "{testEnvironment}.webdriver.get",
-                        args: ["@expand:gpii.test.webdriver.resolveFileUrl({testEnvironment}.options.startFile)"]
+                        args: ["{testEnvironment}.options.url"]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
@@ -59,10 +59,9 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
     }]
 });
 
-// TODO: Collect coverage data.
 fluid.defaults("gpii.tests.locationBar.startup.environment", {
-    gradeNames: ["gpii.test.webdriver.testEnvironment"],
-    startFile:   "%gpii-location-bar-relay/tests/static/tests-locationBar.html?number=9",
+    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+    path:   "tests/static/tests-locationBar.html?number=9",
     expected: {
         modelAfterStartup: {
             number: 9,

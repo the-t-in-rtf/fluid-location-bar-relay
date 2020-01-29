@@ -1,10 +1,13 @@
 (function () {
     "use strict";
 
-    fluid.defaults("gpii.tests.locationBar.queryToModel", {
+    fluid.defaults("gpii.tests.locationBar.modelToQuery", {
         gradeNames: ["gpii.locationBar"],
         modelToState: false,
-        modelToQuery: false,
-        queryToModel: true
+        modelToQuery: true,
+        queryToModel: false,
+        model: {
+            fromInitialModel: true
+        }
     });
 })();

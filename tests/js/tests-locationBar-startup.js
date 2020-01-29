@@ -7,11 +7,6 @@ require("./lib/fixtures");
 
 fluid.registerNamespace("gpii.tests.locationBar.startup");
 
-/* globals window */
-gpii.tests.locationBar.startup.getQueryJson = function () {
-    return gpii.locationBar.stateManager.queryToJson(window.location.search);
-};
-
 fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
     gradeNames: ["gpii.tests.locationBar.caseHolder"],
     rawModules: [{
@@ -46,7 +41,7 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.startup.getQueryJson]
+                        args: [gpii.tests.locationBar.getQueryJson]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",

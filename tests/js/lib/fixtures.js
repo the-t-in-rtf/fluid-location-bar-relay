@@ -14,6 +14,18 @@ gpii.webdriver.loadTestingSupport();
 
 fluid.registerNamespace("gpii.tests.locationBar.caseHolder");
 
+// Common function used to retrieve the query data from the window's location.
+gpii.tests.locationBar.getQueryJson = function () {
+    return gpii.locationBar.stateManager.queryToJson(window.location.search);
+};
+
+// Common function to apply a change to the component's model.
+gpii.tests.locationBar.applyChange = function (path, value) {
+    var component = fluid.getGlobalValue("locationBarComponent");
+    component.applier.change(path, value);
+};
+
+
 // Save coverage data to a file.
 gpii.tests.locationBar.caseHolder.saveCoverage = function (that, coverageData) {
     if (!fluid.jQueryStandalone.isEmptyObject(coverageData)) {

@@ -5,12 +5,18 @@ var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.tests.locationBar.modelToState");
+fluid.registerNamespace("gpii.tests.locationBar.noStateToModel");
 
-fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
+gpii.tests.locationBar.noStateToModel.updateState = function () {
+    window.history.pushState({ fromState: true}, "Change state value.");
+};
+
+
+// The state->model relay mechanism is tested in its enabled state elsewhere.
+fluid.defaults("gpii.tests.locationBar.noStateToModel.caseHolder", {
     gradeNames: ["gpii.tests.locationBar.caseHolder"],
     rawModules: [{
-        name: "Testing the model->state relay mechanism in isolation.",
+        name: "Confirming that the state->model relay mechanism can be disabled using a configuration option.",
         tests: [
             {
                 name: "Confirm that data is synchronized correctly on startup.",
@@ -28,48 +34,30 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertDeepEq",
-                        args:     ["The model should not have been updated based on the query parameter.", "{testEnvironment}.options.expected.modelAfterStartup", "{arguments}.0"]
+                        args:     ["The model should be as expected after startup.", "{testEnvironment}.options.expected.modelAfterStartup", "{arguments}.0"]
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.getQueryJson]
-                    },
-                    {
-                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
-                        listener: "jqUnit.assertDeepEq",
-                        args:     ["The query string in the location bar should not have been changed.", "{testEnvironment}.options.expected.queryAfterStartup", "{arguments}.0"]
-                    },
-                    {
-                        func: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
-                    },
-                    {
-                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
-                        listener: "jqUnit.assertDeepEq",
-                        args:     ["The window history state should include the component's model data.", "{testEnvironment}.options.expected.stateAfterStartup", "{arguments}.0"]
-                    },
-                    {
-                        func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.applyChange, "fromChange", true]
+                        args: [gpii.tests.locationBar.noStateToModel.updateState]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.getQueryJson]
-                    },
-                    {
-                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
-                        listener: "jqUnit.assertDeepEq",
-                        args:     ["The URL should not include our model change.", "{testEnvironment}.options.expected.queryAfterChange", "{arguments}.0"]
-                    },
-                    {
-                        func: "{testEnvironment}.webdriver.executeScript",
                         args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "jqUnit.assertDeepEq",
-                        args:     ["The window history state should have been updated as a result of the model change.", "{testEnvironment}.options.expected.stateAfterChange", "{arguments}.0"]
+                        args:     ["The window history state should have been updated.", "{testEnvironment}.options.expected.stateAfterStateChange", "{arguments}.0"]
+                    },
+                    {
+                        func:    "{testEnvironment}.webdriver.executeScript",
+                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
+                    },
+                    {
+                        event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
+                        listener: "jqUnit.assertDeepEq",
+                        args:     ["The model should not have been updated by the state change.", "{testEnvironment}.options.expected.modelAfterStateChange", "{arguments}.0"]
                     }
                 ]
             }
@@ -77,32 +65,25 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.tests.locationBar.modelToState.environment", {
+fluid.defaults("gpii.tests.locationBar.noStateToModel.environment", {
     gradeNames: ["gpii.test.locationBar.testEnvironment"],
-    path:   "tests/static/tests-locationBar-modelToState.html?fromQuery=true",
+    path:   "tests/static/tests-locationBar-noStateToModel.html",
     expected: {
         modelAfterStartup: {
             fromInitialModel: true
         },
-        queryAfterStartup: {
-            fromQuery: true
-        },
-        stateAfterStartup: {
+        modelAfterStateChange: {
             fromInitialModel: true
         },
-        queryAfterChange: {
-            fromQuery: true
-        },
-        stateAfterChange: {
-            fromInitialModel: true,
-            fromChange: true
+        stateAfterStateChange: {
+            fromState: true
         }
     },
     components: {
         caseHolder: {
-            type: "gpii.tests.locationBar.modelToState.caseHolder"
+            type: "gpii.tests.locationBar.noStateToModel.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.modelToState.environment" });
+gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.noStateToModel.environment" });

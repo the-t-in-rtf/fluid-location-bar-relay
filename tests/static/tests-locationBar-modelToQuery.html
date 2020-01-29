@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Unit Tests for advanced component options.</title>
+        <!-- Bring in jQuery and other dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
+
+        <!-- Bring in fluid dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/dist/infusion-all.js"></script>
+
+        <!-- gpii-express dependency -->
+        <script type="text/javascript" src="../../node_modules/gpii-express/src/js/lib/querystring-coding.js"></script>
+
+        <script type="text/javascript" src ="../../src/js/locationBar.js"></script>
+        <script type="text/javascript" src="js/tests-locationBar-queryToModel.js"></script>
+    </head>
+    <body>
+        <p>This is a test page that has no visible test content.  There is a global locationBarComponent variable that can be interrogated.</p>
+
+        <script type="text/javascript">
+            var queryToModel = gpii.tests.locationBar.advanced.queryToModel();
+            var modelToQuery = gpii.tests.locationBar.advanced.modelToQuery();
+        </script>
+    </body>
+</html>

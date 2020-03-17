@@ -128,7 +128,7 @@
         modelListeners: {
             "*": {
                 funcName:      "gpii.locationBar.stateManager.updateState",
-                args:          ["{that}", "{that].options.addNewHistoryEntry"],
+                args:          ["{that}", "{that}.options.addNewHistoryEntry"],
                 excludeSource: ["init", "local"]
             }
         }

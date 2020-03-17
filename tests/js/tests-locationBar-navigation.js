@@ -7,11 +7,6 @@ require("./lib/fixtures");
 
 fluid.registerNamespace("gpii.tests.locationBar.navigation");
 
-gpii.tests.locationBar.navigation.applyChange = function (path, value) {
-    var component = fluid.getGlobalValue("locationBarComponent");
-    component.applier.change(path, value);
-};
-
 fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
     gradeNames: ["gpii.tests.locationBar.caseHolder"],
     rawModules: [{
@@ -28,7 +23,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.tests.locationBar.navigation.applyChange, "number", 90]
+                        args:     [gpii.tests.locationBar.applyChange, "number", 90]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -42,7 +37,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.navigation.applyChange, "number", 210]
+                        args: [gpii.tests.locationBar.applyChange, "number", 210]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -95,7 +90,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.tests.locationBar.navigation.applyChange, "number", 90]
+                        args:     [gpii.tests.locationBar.applyChange, "number", 90]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -144,7 +139,7 @@ fluid.defaults("gpii.tests.locationBar.navigation.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.tests.locationBar.navigation.applyChange, "number", 90]
+                        args:     [gpii.tests.locationBar.applyChange, "number", 90]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",

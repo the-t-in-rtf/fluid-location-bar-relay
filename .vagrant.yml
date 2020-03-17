@@ -18,6 +18,7 @@ setup_job:
   stage: setup
   script:
     - choco install nodejs-lts -y
+    - choco upgrade googlechrome -y
     - choco install chromedriver -y
     - do.ps1 -c "npm config set bin-links false --global"
 

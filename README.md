@@ -10,7 +10,7 @@ URLs](http://blog.chromium.org/2008/12/security-in-depth-local-web-pages.html).
 
 For usage details, check out [the documentation](docs).
 
-# Tests
+## Tests
 
 To run the tests in this package, you will need to have Chrome and chromedriver installed.  Once you have both those,
 the command `npm test` will run the tests and generate a coverage report.
@@ -18,4 +18,3 @@ the command `npm test` will run the tests and generate a coverage report.
 Because of the need for forward and backward navigation, the tests in this package use
 [gpii-webdriver](https://github.com/GPII/gpii-webdriver), which is based on the WebDriver API.  At time of writing,
 there is [a bug that prevents Firefox from being used with this package](https://issues.gpii.net/browse/GPII-1913).
-

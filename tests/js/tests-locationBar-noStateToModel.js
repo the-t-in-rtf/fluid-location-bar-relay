@@ -1,20 +1,19 @@
 /* eslint-env node */
 "use strict";
 var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.tests.locationBar.noStateToModel");
+fluid.registerNamespace("fluid.tests.locationBar.noStateToModel");
 
-gpii.tests.locationBar.noStateToModel.updateState = function () {
+fluid.tests.locationBar.noStateToModel.updateState = function () {
     window.history.pushState({ fromState: true}, "Change state value.");
 };
 
 
 // The state->model relay mechanism is tested in its enabled state elsewhere.
-fluid.defaults("gpii.tests.locationBar.noStateToModel.caseHolder", {
-    gradeNames: ["gpii.tests.locationBar.caseHolder"],
+fluid.defaults("fluid.tests.locationBar.noStateToModel.caseHolder", {
+    gradeNames: ["fluid.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Confirming that the state->model relay mechanism can be disabled using a configuration option.",
         tests: [
@@ -29,7 +28,7 @@ fluid.defaults("gpii.tests.locationBar.noStateToModel.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -38,12 +37,12 @@ fluid.defaults("gpii.tests.locationBar.noStateToModel.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.noStateToModel.updateState]
+                        args: [fluid.tests.locationBar.noStateToModel.updateState]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -52,7 +51,7 @@ fluid.defaults("gpii.tests.locationBar.noStateToModel.caseHolder", {
                     },
                     {
                         func:    "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -65,8 +64,8 @@ fluid.defaults("gpii.tests.locationBar.noStateToModel.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.tests.locationBar.noStateToModel.environment", {
-    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+fluid.defaults("fluid.tests.locationBar.noStateToModel.environment", {
+    gradeNames: ["fluid.test.locationBar.testEnvironment"],
     path:   "tests/static/tests-locationBar-noStateToModel.html",
     expected: {
         modelAfterStartup: {
@@ -81,9 +80,9 @@ fluid.defaults("gpii.tests.locationBar.noStateToModel.environment", {
     },
     components: {
         caseHolder: {
-            type: "gpii.tests.locationBar.noStateToModel.caseHolder"
+            type: "fluid.tests.locationBar.noStateToModel.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.noStateToModel.environment" });
+fluid.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "fluid.tests.locationBar.noStateToModel.environment" });

@@ -1,14 +1,13 @@
 /* eslint-env node */
 "use strict";
 var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.tests.locationBar.startup");
+fluid.registerNamespace("fluid.tests.locationBar.startup");
 
-fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
-    gradeNames: ["gpii.tests.locationBar.caseHolder"],
+fluid.defaults("fluid.tests.locationBar.startup.caseHolder", {
+    gradeNames: ["fluid.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Testing the location bar startup process...",
         tests: [
@@ -23,7 +22,7 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -32,7 +31,7 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -41,7 +40,7 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.getQueryJson]
+                        args: [fluid.tests.locationBar.getQueryJson]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -54,8 +53,8 @@ fluid.defaults("gpii.tests.locationBar.startup.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.tests.locationBar.startup.environment", {
-    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+fluid.defaults("fluid.tests.locationBar.startup.environment", {
+    gradeNames: ["fluid.test.locationBar.testEnvironment"],
     path:   "tests/static/tests-locationBar.html?number=9",
     expected: {
         modelAfterStartup: {
@@ -69,9 +68,9 @@ fluid.defaults("gpii.tests.locationBar.startup.environment", {
     },
     components: {
         caseHolder: {
-            type: "gpii.tests.locationBar.startup.caseHolder"
+            type: "fluid.tests.locationBar.startup.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.startup.environment" });
+fluid.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "fluid.tests.locationBar.startup.environment" });

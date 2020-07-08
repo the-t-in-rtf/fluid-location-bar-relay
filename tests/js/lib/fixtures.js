@@ -1,33 +1,32 @@
 /* eslint-env node */
 "use strict";
-var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
-var fs    = require("fs");
-var path  = require("path");
+var fluid  = require("infusion");
+var fs     = require("fs");
+var path   = require("path");
 var mkdirp = require("mkdirp");
 
 require("../../../");
 require("./express.js");
 
-require("gpii-webdriver");
-gpii.webdriver.loadTestingSupport();
+require("fluid-webdriver");
+fluid.webdriver.loadTestingSupport();
 
-fluid.registerNamespace("gpii.tests.locationBar.caseHolder");
+fluid.registerNamespace("fluid.tests.locationBar.caseHolder");
 
 // Common function used to retrieve the query data from the window's location.
-gpii.tests.locationBar.getQueryJson = function () {
-    return gpii.locationBar.stateManager.queryToJson(window.location.search);
+fluid.tests.locationBar.getQueryJson = function () {
+    return fluid.locationBar.stateManager.queryToJson(window.location.search);
 };
 
 // Common function to apply a change to the component's model.
-gpii.tests.locationBar.applyChange = function (path, value) {
+fluid.tests.locationBar.applyChange = function (path, value) {
     var component = fluid.getGlobalValue("locationBarComponent");
     component.applier.change(path, value);
 };
 
 
 // Save coverage data to a file.
-gpii.tests.locationBar.caseHolder.saveCoverage = function (that, coverageData) {
+fluid.tests.locationBar.caseHolder.saveCoverage = function (that, coverageData) {
     if (!fluid.jQueryStandalone.isEmptyObject(coverageData)) {
         var resolvedCoverageDir = fluid.module.resolvePath(that.options.coverageDir);
         mkdirp.sync(resolvedCoverageDir);
@@ -41,21 +40,21 @@ gpii.tests.locationBar.caseHolder.saveCoverage = function (that, coverageData) {
     }
 };
 
-// Our test caseHolder (based on a standard one from gpii-test-browser).
-// TODO: Convert this to use sequences once gpii-express and gpii-webdriver are converted.
-fluid.defaults("gpii.tests.locationBar.caseHolder", {
-    gradeNames: ["gpii.test.webdriver.caseHolder"],
-    coverageDir: "%gpii-location-bar-relay/coverage",
+// Our test caseHolder (based on a standard one from fluid-test-browser).
+// TODO: Convert this to use sequences once fluid-express and fluid-webdriver are converted.
+fluid.defaults("fluid.tests.locationBar.caseHolder", {
+    gradeNames: ["fluid.test.webdriver.caseHolder"],
+    coverageDir: "%fluid-location-bar-relay/coverage",
     sequenceEnd: [
         // Retrieve the coverage data.
         {
             func: "{testEnvironment}.webdriver.executeScript",
-            args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.__coverage__"] // functionPath, fnArgs, environment
+            args: [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.__coverage__"] // functionPath, fnArgs, environment
         },
         // Save the coverage data.
         {
             event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
-            listener: "gpii.tests.locationBar.caseHolder.saveCoverage",
+            listener: "fluid.tests.locationBar.caseHolder.saveCoverage",
             args:     ["{that}", "{arguments}.0"]
         },
         { func: "{testEnvironment}.events.stopFixtures.fire", args: [] },
@@ -63,11 +62,11 @@ fluid.defaults("gpii.tests.locationBar.caseHolder", {
     ]
 });
 
-fluid.defaults("gpii.test.locationBar.testEnvironment", {
-    gradeNames: ["gpii.test.webdriver.testEnvironment.withExpress"],
+fluid.defaults("fluid.test.locationBar.testEnvironment", {
+    gradeNames: ["fluid.test.webdriver.testEnvironment.withExpress"],
     components: {
         express: {
-            type: "gpii.test.locationBar.express"
+            type: "fluid.test.locationBar.express"
         }
     }
 });

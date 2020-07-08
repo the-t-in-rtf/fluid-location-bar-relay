@@ -7,17 +7,17 @@
         <!-- Bring in fluid dependencies -->
         <script type="text/javascript" src="../../node_modules/infusion/dist/infusion-all.js"></script>
 
-        <script type="text/javascript" src ="../../node_modules/gpii-binder/src/js/binder.js"></script>
+        <script type="text/javascript" src ="../../node_modules/fluid-binder/src/js/binder.js"></script>
 
-        <!-- gpii-express dependency -->
-        <script type="text/javascript" src="../../node_modules/gpii-express/src/js/lib/querystring-coding.js"></script>
+        <!-- fluid-express dependency -->
+        <script type="text/javascript" src="../../node_modules/fluid-express/src/js/lib/querystring-coding.js"></script>
 
         <script type="text/javascript" src ="../../src/js/locationBar.js"></script>
         <script type="text/javascript" src="./js/tests-locationBar-binder.js"></script>
     </head>
     <body>
         <form class="locationBar-binder-form">
-            <p>This page is used to test gpii-binder and this package when used in combination.</p>
+            <p>This page is used to test fluid-binder and this package when used in combination.</p>
 
             <h2>Form Controls</h2>
 
@@ -40,7 +40,7 @@
         </form>
 
         <script type="text/javascript">
-            var combinedComponent = gpii.tests.locationBar.binder(".locationBar-binder-form");
+            var combinedComponent = fluid.tests.locationBar.binder(".locationBar-binder-form");
         </script>
     </body>
 </html>

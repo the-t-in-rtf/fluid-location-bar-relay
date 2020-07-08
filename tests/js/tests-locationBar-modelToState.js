@@ -1,14 +1,13 @@
 /* eslint-env node */
 "use strict";
 var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.tests.locationBar.modelToState");
+fluid.registerNamespace("fluid.tests.locationBar.modelToState");
 
-fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
-    gradeNames: ["gpii.tests.locationBar.caseHolder"],
+fluid.defaults("fluid.tests.locationBar.modelToState.caseHolder", {
+    gradeNames: ["fluid.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Testing the model->state relay mechanism in isolation.",
         tests: [
@@ -23,7 +22,7 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -32,7 +31,7 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.getQueryJson]
+                        args: [fluid.tests.locationBar.getQueryJson]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -41,7 +40,7 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -50,12 +49,12 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.applyChange, "fromChange", true]
+                        args: [fluid.tests.locationBar.applyChange, "fromChange", true]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.getQueryJson]
+                        args: [fluid.tests.locationBar.getQueryJson]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -64,7 +63,7 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -77,8 +76,8 @@ fluid.defaults("gpii.tests.locationBar.modelToState.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.tests.locationBar.modelToState.environment", {
-    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+fluid.defaults("fluid.tests.locationBar.modelToState.environment", {
+    gradeNames: ["fluid.test.locationBar.testEnvironment"],
     path:   "tests/static/tests-locationBar-modelToState.html?fromQuery=true",
     expected: {
         modelAfterStartup: {
@@ -100,9 +99,9 @@ fluid.defaults("gpii.tests.locationBar.modelToState.environment", {
     },
     components: {
         caseHolder: {
-            type: "gpii.tests.locationBar.modelToState.caseHolder"
+            type: "fluid.tests.locationBar.modelToState.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.modelToState.environment" });
+fluid.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "fluid.tests.locationBar.modelToState.environment" });

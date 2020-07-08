@@ -1,8 +1,8 @@
 (function () {
     "use strict";
 
-    fluid.defaults("gpii.tests.locationBar.queryToModel", {
-        gradeNames: ["gpii.locationBar"],
+    fluid.defaults("fluid.tests.locationBar.queryToModel", {
+        gradeNames: ["fluid.locationBar"],
         modelToState: false,
         modelToQuery: false,
         queryToModel: true,

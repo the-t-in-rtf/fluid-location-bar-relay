@@ -1,14 +1,13 @@
 /* eslint-env node */
 "use strict";
 var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
-    gradeNames: ["gpii.tests.locationBar.caseHolder"],
+fluid.defaults("fluid.tests.locationBar.binder.caseHolder", {
+    gradeNames: ["fluid.tests.locationBar.caseHolder"],
     rawModules: [{
-        name: "Testing the location bar and 'gpii-binder' together...",
+        name: "Testing the location bar and 'fluid-binder' together...",
         tests: [
             {
                 name: "Confirm that query data is relayed on startup...",
@@ -21,7 +20,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -34,7 +33,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onFindElementComplete",
-                        listener: "gpii.test.webdriver.testElementValue",
+                        listener: "fluid.test.webdriver.testElementValue",
                         args:     ["The form element should have been updated from the query...", "{arguments}.0", "two"] // message, element, expectedValue, jqUnitFn
                     }
                 ]
@@ -61,7 +60,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onActionsHelperComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -70,7 +69,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state.radio"] // functionPath, fnArgs, environment
+                        args: [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state.radio"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -102,7 +101,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onActionsHelperComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
+                        args: [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -116,7 +115,7 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onNavigateHelperComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
+                        args: [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "combinedComponent.model.radio"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -129,14 +128,14 @@ fluid.defaults("gpii.tests.locationBar.binder.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.tests.locationBar.binder.environment", {
-    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+fluid.defaults("fluid.tests.locationBar.binder.environment", {
+    gradeNames: ["fluid.test.locationBar.testEnvironment"],
     path:   "tests/static/tests-locationBar-binder.html?radio=%22two%22",
     components: {
         caseHolder: {
-            type: "gpii.tests.locationBar.binder.caseHolder"
+            type: "fluid.tests.locationBar.binder.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.binder.environment" });
+fluid.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "fluid.tests.locationBar.binder.environment" });

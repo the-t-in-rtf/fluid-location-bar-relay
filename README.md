@@ -1,4 +1,4 @@
-# gpii-location-bar-relay
+# fluid-location-bar-relay
 
 This is a [Fluid component](http://fluidproject.org/infusion.html) that relays changes between a component's model and
 both the browser state and location bar.  This makes your model state "bookmarkable", and makes it so that users can
@@ -16,5 +16,5 @@ To run the tests in this package, you will need to have Chrome and chromedriver 
 the command `npm test` will run the tests and generate a coverage report.
 
 Because of the need for forward and backward navigation, the tests in this package use
-[gpii-webdriver](https://github.com/GPII/gpii-webdriver), which is based on the WebDriver API.  At time of writing,
-there is [a bug that prevents Firefox from being used with this package](https://issues.gpii.net/browse/GPII-1913).
+[fluid-webdriver](https://github.com/fluid-project/fluid-webdriver), which is based on the WebDriver API.  At time of writing,
+there is [a bug that prevents Firefox from being used with this package](https://issues.fluid.net/browse/fluid-1913).

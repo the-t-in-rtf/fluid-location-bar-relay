@@ -1,4 +1,4 @@
-# `gpii.locationBar`
+# `fluid.locationBar`
 
 A component that relays changes between its model and both the browser's location bar and history.  It:
 
@@ -22,7 +22,7 @@ See "Component Options" below for more details.
 ## Usage
 
 If you want to sync all model changes with the state and the location bar, you can simply add the
-`gpii.locationBar` grade to your component's `gradeNames` (see below).  All model data will be synced with the
+`fluid.locationBar` grade to your component's `gradeNames` (see below).  All model data will be synced with the
 location bar and browser state.  If you want fuller control, update the `rules` options (see below) to control which
 model variables are relayed.
 
@@ -42,7 +42,7 @@ You have been warned...
 ## Query String Encoding
 
 All query string values are encoded and decoded using the functions provided by the
-[gpii-express](http://github.com/GPII/gpii-express/) package.   See that package for more details.
+[fluid-express](http://github.com/fluid-project/fluid-express/) package.   See that package for more details.
 
 ## Component Options
 

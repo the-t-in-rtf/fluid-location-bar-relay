@@ -1,14 +1,13 @@
 /* eslint-env node */
 "use strict";
 var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
 require("./lib/fixtures");
 
-fluid.registerNamespace("gpii.tests.locationBar.queryToModel");
+fluid.registerNamespace("fluid.tests.locationBar.queryToModel");
 
-fluid.defaults("gpii.tests.locationBar.queryToModel.caseHolder", {
-    gradeNames: ["gpii.tests.locationBar.caseHolder"],
+fluid.defaults("fluid.tests.locationBar.queryToModel.caseHolder", {
+    gradeNames: ["fluid.tests.locationBar.caseHolder"],
     rawModules: [{
         name: "Testing the query->model relay mechanism in isolation.",
         tests: [
@@ -23,7 +22,7 @@ fluid.defaults("gpii.tests.locationBar.queryToModel.caseHolder", {
                     {
                         event:    "{testEnvironment}.webdriver.events.onGetComplete",
                         listener: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "locationBarComponent.model"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -32,7 +31,7 @@ fluid.defaults("gpii.tests.locationBar.queryToModel.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args: [gpii.tests.locationBar.getQueryJson]
+                        args: [fluid.tests.locationBar.getQueryJson]
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -41,7 +40,7 @@ fluid.defaults("gpii.tests.locationBar.queryToModel.caseHolder", {
                     },
                     {
                         func: "{testEnvironment}.webdriver.executeScript",
-                        args:     [gpii.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
+                        args:     [fluid.test.webdriver.invokeGlobal, "fluid.getGlobalValue", "window.history.state"] // functionPath, fnArgs, environment
                     },
                     {
                         event:    "{testEnvironment}.webdriver.events.onExecuteScriptComplete",
@@ -54,8 +53,8 @@ fluid.defaults("gpii.tests.locationBar.queryToModel.caseHolder", {
     }]
 });
 
-fluid.defaults("gpii.tests.locationBar.queryToModel.environment", {
-    gradeNames: ["gpii.test.locationBar.testEnvironment"],
+fluid.defaults("fluid.tests.locationBar.queryToModel.environment", {
+    gradeNames: ["fluid.test.locationBar.testEnvironment"],
     path:   "tests/static/tests-locationBar-queryToModel.html?foo=true&bar=false",
     expected: {
         modelAfterStartup: {
@@ -71,9 +70,9 @@ fluid.defaults("gpii.tests.locationBar.queryToModel.environment", {
     },
     components: {
         caseHolder: {
-            type: "gpii.tests.locationBar.queryToModel.caseHolder"
+            type: "fluid.tests.locationBar.queryToModel.caseHolder"
         }
     }
 });
 
-gpii.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "gpii.tests.locationBar.queryToModel.environment" });
+fluid.test.webdriver.allBrowsers({ browsers: ["chrome"], baseTestEnvironment: "fluid.tests.locationBar.queryToModel.environment" });

@@ -27,7 +27,7 @@
         "fluid-binder": "1.1.1-dev.20200708T095140Z.6ddf009.FLUID-6524",
         "fluid-grunt-lint-all": "1.0.8",
         "fluid-testem": "2.1.13-dev.20200708T092513Z.7e90cc4.FLUID-6524",
-        "fluid-webdriver": "1.1.1-dev.20200708T085824Z.de039d8.FLUID-6524",
+        "fluid-webdriver": "1.1.1",
         "grunt": "1.2.1",
         "kettle": "1.12.0",
         "node-jqunit": "1.1.8",

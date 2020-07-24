@@ -22,7 +22,7 @@
         "infusion": "3.0.0-dev.20200604T195400Z.dddc6a2.FLUID-6145"
     },
     "devDependencies": {
-        "eslint": "7.4.0",
+        "eslint": "7.5.0",
         "eslint-config-fluid": "1.4.0",
         "eslint-plugin-markdown": "1.0.2",
         "fluid-binder": "1.1.1",
@@ -30,7 +30,7 @@
         "fluid-testem": "2.1.13",
         "fluid-webdriver": "1.1.1",
         "grunt": "1.2.1",
-        "kettle": "1.12.0",
+        "kettle": "1.15.0",
         "node-jqunit": "1.1.8",
         "nyc": "15.1.0"
     }

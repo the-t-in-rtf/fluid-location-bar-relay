@@ -2,30 +2,30 @@
 "use strict";
 var fluid = require("infusion");
 
-fluid.require("%gpii-express");
+fluid.require("%fluid-express");
 
-fluid.defaults("gpii.test.locationBar.express", {
-    gradeNames: ["gpii.express"],
+fluid.defaults("fluid.test.locationBar.express", {
+    gradeNames: ["fluid.express"],
     components: {
         src: {
-            type: "gpii.express.router.static",
+            type: "fluid.express.router.static",
             options: {
                 path: "/src",
-                content: ["%gpii-location-bar-relay/instrumented/src", "%gpii-location-bar-relay/src"]
+                content: ["%fluid-location-bar-relay/instrumented/src", "%fluid-location-bar-relay/src"]
             }
         },
         nm: {
-            type: "gpii.express.router.static",
+            type: "fluid.express.router.static",
             options: {
                 path: "/node_modules",
-                content: ["%gpii-location-bar-relay/node_modules"]
+                content: ["%fluid-location-bar-relay/node_modules"]
             }
         },
         tests: {
-            type: "gpii.express.router.static",
+            type: "fluid.express.router.static",
             options: {
                 path: "/tests",
-                content: ["%gpii-location-bar-relay/tests"]
+                content: ["%fluid-location-bar-relay/tests"]
             }
         }
     }

@@ -3,8 +3,6 @@
     A component to relay model changes to and from the browser's location bar.  See the docs for details.
 
 */
-/* global fluid, window, document */
-
 (function () {
     "use strict";
 
